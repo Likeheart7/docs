@@ -13,8 +13,7 @@ Java虚拟机设计时有意将类加载阶段中的“通过一个类的全限�
 - 启动类加载器(Bootstrap ClassLoader)：这个类加载器**负责加载存放在&lt;JAVA_HOME&gt;\lib目录，或者-Xbootclasspath参数所指定的路径中存放的类库至虚拟机内存(前提是这些类库能被Java虚拟机识别)**。启动类加载器无法被Java程序直接引用，用户在编写自定义类加载器时如果需要把加载请求委派给引导类加载器(就是启动类加载器)处理，直接使用null代替即可。
 - 扩展类加载器(Extension ClassLoader)：这个类加载器在类sun.Launcher$ExtClassLoader中以Java代码实现。**负责加载&lt;JAVA_HOME&gt;\lib\ext目录中的，或者被java.ext.dirs系统变量所指定的路径中所有的类库**。该类加载器是Java系统类库的扩展机制，JDK开发团队允许用户将具有通用性的类库放在ext目录里以扩展Java SE的功能，在JDK 9之后，之中扩展机制被模块化的天然扩展能力取代。因为扩展类加载器由Java代码实现，所以**开发人员可以直接在程序中使用扩展类加载器来加载Class文件**。
 - 应用程序类加载器(系统类加载器)：这个类加载器由sun.misc.Launcher$AppClassLoader实现。因为其是ClassLoader类中的getSystemClassLoader的返回值，所有也被称为系统类加载器。负责加载用户类路径(Class Path)下的所有类库，可以直接在代码中使用。如果开发人员没有在程序中自定义类加载器，系统类加载器就是程序中默认的类加载器。
-
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/23118939/1681974620431-dc7e2b8e-2a22-4efa-9e0e-b4587d835158.png#averageHue=%23e1cca7&clientId=u1733f383-58d8-4&from=paste&height=298&id=uee876399&name=image.png&originHeight=595&originWidth=623&originalType=binary&ratio=1.125&rotation=0&showTitle=false&size=148461&status=done&style=none&taskId=u27be2a9d-cc62-42db-a6ad-ac7e98dd2f0&title=&width=312)
+<div align='center'>![image.png](./images/classloader.png)</div>
 ### 双亲委派
 双亲委派模型要求除了顶层的启动类加载器外，所有的类加载器都应当有自己的父类，不过这里所说的父子关系一般不通过继承来实现，而是通过组合来复用父加载器的代码。
 双亲委派模型的工作过程是：如果一个类加载器收到一个类加载器请求，会先委托自己的父类加载器去完成，所以所有的加载请求都会委托到启动类加载器来完成，只有父类无法完成这个加载请求时（他的搜索范围内没有找到所需的类），子类加载器才会尝试自己去完成加载。

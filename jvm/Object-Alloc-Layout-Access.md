@@ -97,12 +97,12 @@ Java程序通过栈上的reference数据来操作堆上的具体对象。规范�
 
 1. 使用句柄访问：Java堆中需要划分出一块内存来作为句柄池，reference存储的就是对象的句柄地址，而**句柄中包含了对象实例数据和类型数据****各自****的具体地址信息**。结构如下图所示。
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/23118939/1681264206962-21418a2e-221e-4e4b-8ecb-b2e04edaabb0.png#averageHue=%23f3f3f3&clientId=u6ea564d3-a263-4&from=paste&height=304&id=u8f75f61a&name=image.png&originHeight=380&originWidth=843&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=120105&status=done&style=none&taskId=u3a0dea20-85c0-42d5-af55-a77dcd720db&title=&width=674.4)
+<div align='center'>![image.png](./images/accessbyhandle.png)</div>
 通过句柄访问对象
 
 2. 直接指针访问：使用直接指针访问的话，Java内存就必须考虑如何放置访问类型数据的相关信息，reference中存储的就是对象地址，如果只是访问**对象本身**的话，就不用多一次间接访问的开销（指reference --&gt; 句柄 --&gt; 对象），结构如下所示。
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/23118939/1681264414765-51352a4f-b109-4fce-9a98-7d98ba9be2d0.png#averageHue=%23f5f5f5&clientId=u6ea564d3-a263-4&from=paste&height=304&id=u276a22a2&name=image.png&originHeight=380&originWidth=844&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=102233&status=done&style=none&taskId=u1398301c-1dff-4a16-9020-5284b800c73&title=&width=675.2)
+<div align='center'>![image.png](./images/accessbypointer.png)</div>
 通过直接指针访问对象
 ## 优缺点
 
