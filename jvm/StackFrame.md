@@ -1,6 +1,6 @@
 # 栈帧结构
 在不同的虚拟机实现中，执行引擎在执行字节码的时候，通常会有解释执行（通过解释器执行）和编译执行（通过即时编译器产生的本地代码执行）两种选择，也可能两种兼备，甚至可能会有同时包含几个不同级别的即时编译器一起工作的执行引擎。但是从外观看，所有的Java虚拟机执行引擎的输入输出一致：输入的是字节码二进制流，处理过程时字节码解析执行的等效过程，输出的是执行结果。
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/23118939/1682064744144-fb3d2ac1-8a8b-4aa8-9cc0-2bcf666d7bcb.png#averageHue=%23f4f4f4&clientId=ub30f03f5-d38e-4&from=paste&height=519&id=u591ece18&name=image.png&originHeight=690&originWidth=242&originalType=binary&ratio=1.125&rotation=0&showTitle=false&size=25806&status=done&style=none&taskId=uf8fd0f62-9558-44d2-9f8f-d2236e775ed&title=&width=182)
+<div align='center'>![image.png](./images/stackframe.png)</div>
 ## 运行时栈帧结构
 Java虚拟机以方法作为最基本的运行单元，栈帧是方法调用和方法执行的数据结构。**栈帧存储了局部变量表、操作数栈、动态连接、方法返回地址和一些额外的附加信息**。每个方法的调用与执行结束对应的就是一个栈帧入栈到出栈的过程。在**编译源码时栈帧需要多大的局部变量表和多深的操作数栈已经被计算出来，记录在方法表的Code属性中，其中max_locals数据项中确定了需要分配的局部变量表的最大容量**。
 ## 局部变量表

@@ -78,7 +78,7 @@ HotSpot的新生代用的就是这种算法。新生代被分为三个区域，�
 
 ## 经典垃圾收集器
 指的是在JDK 7 Update 4 之后（在这个版本中正式提供了商用的G1收集器，此前G1仍处于实验状态）、JDK 11正式发布之前，OracleJDK中的HotSpot虚拟机所包含的全部可用的垃圾收集器（所以不包含Shenandoah）。
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/23118939/1681371705329-acae4723-22b5-4fef-9554-bccdc8b97411.png#averageHue=%23c4e5af&clientId=ue513beba-e2df-4&from=paste&height=414&id=u999024bd&name=image.png&originHeight=517&originWidth=639&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=45542&status=done&style=none&taskId=u31a0da98-8e03-4b2a-b364-4c5eeaa4230&title=&width=511.2)
+<div align='center'>![垃圾收集器](./images/garbagecollection.png)</div>
 > 有连线的垃圾收集器标识可以组合使用，而Serial + CMS和ParNew + Serial Old这两种组合在JDK 8时被声明为废弃，在JDK 9彻底弃用。
 
 ### ZGC
@@ -89,7 +89,8 @@ HotSpot的新生代用的就是这种算法。新生代被分为三个区域，�
 :::
 
 ## 收集器的权衡
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/23118939/1681374992797-6a1345c5-0206-45da-9edf-b47cfafceb48.png#averageHue=%23faf7f3&clientId=ue513beba-e2df-4&from=paste&height=623&id=u49758a93&name=image.png&originHeight=779&originWidth=708&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=386709&status=done&style=none&taskId=u12408982-9bea-45b1-b451-bf0ceb4802f&title=&width=566.4)
+![收集器的权衡](https://cdn.nlark.com/yuque/0/2023/png/23118939/1681374992797-6a1345c5-0206-45da-9edf-b47cfafceb48.png#averageHue=%23faf7f3&clientId=ue513beba-e2df-4&from=paste&height=623&id=u49758a93&name=image.png&originHeight=779&originWidth=708&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=386709&status=done&style=none&taskId=u12408982-9bea-45b1-b451-bf0ceb4802f&title=&width=566.4)
+**待补充......**
 ## 收集器相关的参数
 | **参数** | **描述** |
 | --- | --- |

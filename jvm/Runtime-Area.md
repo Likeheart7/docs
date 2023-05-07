@@ -1,7 +1,7 @@
 # 运行时数据区
 根据《Java虚拟机规范》规定，Java虚拟机所管理的内存包括以下几个运行时数据区域。
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/23118939/1681203065714-80e49c25-1193-4032-9bf7-e49efe72f060.png#averageHue=%23e3e3e3&clientId=ubed642fa-073b-4&from=paste&height=355&id=uaaf36be5&name=image.png&originHeight=444&originWidth=766&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=41480&status=done&style=none&taskId=ue8008729-28a3-40ce-830f-49da1f405c1&title=&width=612.8)
-Java虚拟机运行时数据区
+<div align='center'>![image.png](./images/runtimearea.png)</div>
+<center>Java虚拟机运行时数据区</center>
 ## 程序计数器
  是一块较小的内存空间，它可以看作是当前线程所执行的字节码的行号指示器。在Java虚拟机的概念模型里，**字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令**，它是程序控制流的指示器，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。
  Java虚拟机的多线程是通过线程轮流切换、分配处理器执行时间的方式来实现的，在任何一个确定的时刻，一个处理器（对于多核处理器来说是一个内核）都只会执行一条线程中的指令。因此，为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程之间计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。
