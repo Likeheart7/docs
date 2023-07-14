@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'Xing Blogs',
+    title: 'Xing Notes',
     description: 'Record My Knowledge',
     head: [
         ['link', { rel: 'icon', href: '/assets/img/logo.png' }]
@@ -26,6 +26,7 @@ module.exports = {
         ],
         sidebar: {
             '/java/': [
+                'PrimaryDataType',
                 'String',
                 'IO',
                 'Annotation',
