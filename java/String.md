@@ -1,14 +1,24 @@
 # String
-## String中的部分成员变量
-1. char[] ：字符数组，String的本质。
+## String
+1. char[] ：字符数组，String本质上使用char数组存储数据。**在 Java 9 之后，String 类的实现改用 byte 数组存储字符串，同时使用 `coder` 来标识使用了哪种编码。**
 2. hash：String对应的hash值，通过构造器String(String original)创建时，在构造器内部就对成员变量hash进行了赋值
-```javascript
+```java
 public String(String original) {
   this.value = original.value;
   this.hash = original.hash;
 }
 ```
-## 字符串拼接之 + 
+### String Pool
+**字符串常量池（String Pool）** 存着所有字符串字面量（literal strings），**这些字面量在编译时期就确定**。不仅如此，还可以使用 String 的 **intern() 方法在运行过程将字符串添加到 String Pool** 中。==如果使用字面量的形式声明字符串，字符串会自动添加到String Pool中==。
+### 不可变的优势
+* 可以缓存hash值
+* String Pool的需要
+* 线程安全
+* 作为参数时防止篡改
+## 字符串拼接
+
+### +
+
 ​	本质上Java通过+进行字符串拼接的操作是Java语言提供的语法糖，对于代码
 ```java
     public static void main(String[] args) {
@@ -17,7 +27,7 @@ public String(String original) {
         String c = a + b;
     }
 ```
-​	通过反编译可以看到，在编译器对其进行编译后，原理是通过new一个Stringbuilder对象，通过其append方法进行拼接。其反编译后的代码为
+​	通过反编译可以看到，在编译器对其进行编译后，原理是通过new一个StringBuilder对象，通过其append方法进行拼接。其反编译后的代码为
 
 ```java
     public static void main(String[] args) {
@@ -27,8 +37,8 @@ public String(String original) {
     }
 ```
 
-## 其他字符串拼接方法	
-### String的concat
+### concat()
+
 ```java
     public String concat(String str) {
         //首先判断如果str为空串，直接返回当前字符串即可
@@ -44,6 +54,7 @@ public String(String original) {
     }
 ```
 ### StringBuilder的append方法
+
 首先StringBuilder中的append方法调用了其父类的append
 ```java
     public StringBuilder append(String str) {
@@ -67,7 +78,8 @@ public String(String original) {
 	可以看到此处并没有重新new一个对象，所以在循环拼接等情况下一定要使用StringBuilder的append方法。
 > StringBuffer是加了synchronized关键字修饰的StringBuilder
 
-## Java 8 提供的StringJoiner
+### StringJoiner
+
 ```java
 StringJoiner sj = new StringJoiner(",");
 sj.add("chen");
@@ -100,7 +112,9 @@ StringJoiner内部通过StringBuilder实现，主要为了Java 8 结合stream使
     }
 ```
 结果为`chen, xing, chen, hai`，可以通过String.join(delimiter, List)代替。
-## 字符串拼接整型
+
+### 字符串拼接整型
+
 String.valueOf(int i)内部实现是通过Integer.toString()；
 ```java
 public static String valueOf(int i) {
@@ -120,14 +134,25 @@ public static void main(String[] args) {
     (new StringBuilder()).append("").append(i).toString();
 }
 ```
-## Java 6 和 Java 7中subString的区别
+## 附
+
+### 字符串长度限制
+
+字符串有长度限制，在编译期，要求字符串常量池中的常量不能超过65535，并且在javac执行过程中控制了最大值为65534。
+在运行期，长度不能超过Int的范围，否则会抛异常。
+
+### Java 6 和 Java 7中subString的区别
+
 在Java 6 中subString其实是取了原String的部分，虽然是两个不同的String对象，但是指向的char[]是同一个，只是通过beginIndex和endIndex进行截取。
 表面上这种方法是对内存空间的节省，但是如果原String销毁了，而该子String仍存在，那么char[]中未被该子String使用的部分，本质上是造成了内存泄露的。
-## Switch对字符串的支持
+
+### Switch对字符串的支持
+
 switch不支持long类型
 switch的编译会用到两个指令，tablesswitch和lookupswitch，这两个命令只会运行在int上，对于byte、short的支持通过强转为int类型实现。
 switch对字符串的支持通过hashcode()和equals()方法实现，hashcode()返回的是int类型。为防止哈希碰撞，又通过equals进行二次检测。其反编译后的代码如下
 最终通过生成了两个switch，第一个通过hashCode和equals确定var3的值，第二个通过var3判断决定走哪一条分支。
+
 ```java
 public static void main(String[] args) {
     String flag = "abc";
@@ -155,20 +180,6 @@ public static void main(String[] args) {
 }
 
 ```
+
 > 如果在循环中使用switch代码块，需要频繁的调用hashCode方法，但是由于String中有一个成员变量hash存储了对象的哈希值，所以开销并不会太大。
 
-## intern()
-只有在通过字面量的方式新建String时，会把该字符串放入字符串常量池，如果通过new的方法新建String也想直接引用字符串常量池中的字符串，可以使用intern方法。
-```java
-public static void main(String[] args) {
-    String a = "abc";
-    String b = new String("abc");
-    String c = b.intern();
-    System.out.println(a == b);     //false
-    System.out.println(a == c);     //true
-}
-```
-intern将该字符串放入字符串常量池并返回他的引用，如果存在则直接返回它的引用。
-## 字符串长度限制
-字符串有长度限制，在编译期，要求字符串常量池中的常量不能超过65535，并且在javac执行过程中控制了最大值为65534。
-在运行期，长度不能超过Int的范围，否则会抛异常。
