@@ -5,7 +5,6 @@ module.exports = {
         ['link', { rel: 'icon', href: '/assets/img/logo.png' }]
     ],
     base: '/docs/',
-    theme: 'reco',
     // 按中国习惯显示日期
     locales: {
         '/': {
