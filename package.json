@@ -6,10 +6,11 @@
   "author": "chenxing <1057791979@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "vuepress": "^1.9.9"
+    "vuepress": "^1.9.10"
   },
   "scripts": {
-    "dev": "vuepress dev .",
-    "build": "vuepress build ."
+    "docs:dev": "vuepress dev .",
+    "docs:build": "vuepress build .",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

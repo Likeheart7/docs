@@ -1,9 +1,17 @@
 module.exports = {
-    title: 'Xing Blogs',
+    title: 'CS Knowledge',
     description: 'Record My Knowledge',
     head: [
         ['link', { rel: 'icon', href: '/assets/img/logo.png' }]
     ],
+    base: '/docs/',
+    theme: 'reco',
+    // 按中国习惯显示日期
+    locales: {
+        '/': {
+          lang: 'zh-CN'
+        }
+    },
     // 主题配置
     themeConfig: {
         // 配置页面左上角的logo，/为.vuepress下的public文件夹
