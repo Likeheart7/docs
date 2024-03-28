@@ -1,10 +1,14 @@
-# 基本数据类型
+---
+title: 基本数据类型
+author: 岑参
+date: '2022-07-12'
+---
 
-## 基本数据类型
+|       | byte | short | int | long | float | double | char | boolean |
+|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| 占用bit | 8 | 16 | 32 | 64 | 32 | 64 |  8 | ? |
 
-> byte/8、short/16、int/32、long/64、float/32、double/64、char/16、boolean/?
-
-boolean只有true/false两个值，可以使用1bit来存储，**JVM在编译器会将boolean的数据类型转为int，使用1表示true，0表示false；并且JVM支持boolean数组，通过读写byte数组来实现，也就是说==数组中的boolean元素每个占8bit==。**
+boolean只有true/false两个值，可以使用1bit来存储，**JVM在编译器会将boolean的数据类型转为int，使用1表示true，0表示false；并且JVM支持boolean数组，通过读写byte数组来实现，也就是说 <mark>数组中的boolean元素每个占8bit</mark>。**
 
 ## 包装类
 
@@ -81,8 +85,7 @@ private static class IntegerCache {
 - int ： -128 and 127
 - long：-128 and 127
 - char in the range \u0000 to \u007F
-
-* double and float without cache
+- double and float without cache
 
 
 

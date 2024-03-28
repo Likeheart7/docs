@@ -1,3 +1,8 @@
+---
+title: 注解
+author: 岑参
+date: '2023-08-12'
+---
 # 注解
 ## 元注解
 元注解一共有六个：
@@ -40,11 +45,11 @@ public class DemoAnnoWithReflect {
     public static void main(String[] args) {
         DemoPerformClass demoPerformClass = new DemoPerformClass();
         System.out.println(demoPerformClass);
-        debugAnno(demoPerformClass);
+        demoAnnoResolver(demoPerformClass);
         System.out.println(demoPerformClass);
     }
 
-    private static void debugAnno(Object obj) {
+    private static void demoAnnoResolver(Object obj) {
         Class<?> clazz = obj.getClass();
 
         Field[] fields = clazz.getDeclaredFields();

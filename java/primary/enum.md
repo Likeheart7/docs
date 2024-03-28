@@ -1,14 +1,18 @@
-# 枚举
+---
+title: 枚举
+author: 岑参
+date: '2023-04-10'
+---
 枚举是单例模式最好的实现方式之一。
 ## 枚举示例
 从**类型安全性**和**程序可读性**两方面考虑，int和String枚举模式的缺点如下所示：
 
-1. 对于`int`类型，某个方法在参数为该枚举类型是，如果调用方使用EnumClass.EnumInstance作为参数传入，则不会产生问题，若**调用方直接传入某个int类型的变量或字面量**，就可能出现意外的情况
+1. 对于`int`类型，某个方法在参数为该枚举类型时，如果调用方使用EnumClass.EnumInstance作为参数传入，则不会产生问题，若**调用方直接传入某个int类型的变量或字面量**，就可能出现意外的情况
 2. 对于`String`类型，由于通过String实现需要依赖于字符串的比较操作，所以会产生性能问题。
 ### 一个简单的枚举示例
 ```java
 public enum DemoSimpleEnumExample {
-    Spring, SUMMER, FALL, WINTER;
+    SPRING, SUMMER, FALL, WINTER;
 }
 ```
 ### 一个包含成员变量的枚举示例
@@ -28,7 +32,7 @@ public enum DemoEnumWithProperty {
 ```
 
 - 枚举实例必须写在枚举类最前面
-- 构造器**不能为public**
+- <mark>构造器不能为public</mark>
 ### 使用接口组织枚举
 ```java
 public interface Food {  

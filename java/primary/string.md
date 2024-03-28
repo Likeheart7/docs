@@ -1,6 +1,9 @@
-# String
-## String
-1. char[] ：字符数组，String本质上使用char数组存储数据。**在 Java 9 之后，String 类的实现改用 byte 数组存储字符串，同时使用 `coder` 来标识使用了哪种编码。**
+---
+title: String
+author: "岑参"
+date: '2022-08-01'
+---
+1. char[] ：字符数组，String本质上使用char数组存储数据。**在 Java 9 之后，String 类的实现改用 byte 数组存储字符串，同时使用 `coder` 来标识使用了哪种编码。因为大部分字符串使用只需要1个字节就可以表示的Latin-1编码，所以使用byte可以<mark>节约内存</mark>**
 2. hash：String对应的hash值，通过构造器String(String original)创建时，在构造器内部就对成员变量hash进行了赋值
 ```java
 public String(String original) {
@@ -9,7 +12,7 @@ public String(String original) {
 }
 ```
 ### String Pool
-**字符串常量池（String Pool）** 存着所有字符串字面量（literal strings），**这些字面量在编译时期就确定**。不仅如此，还可以使用 String 的 **intern() 方法在运行过程将字符串添加到 String Pool** 中。==如果使用字面量的形式声明字符串，字符串会自动添加到String Pool中==。
+**字符串常量池（String Pool）** 存着所有字符串字面量（literal strings），**这些字面量在编译时期就确定**。不仅如此，还可以使用 String 的 **intern() 方法在运行过程将字符串添加到 String Pool** 中。<mark>如果使用字面量的形式声明字符串，字符串会自动添加到String Pool中</mark>。
 ### 不可变的优势
 * 可以缓存hash值
 * String Pool的需要
@@ -138,7 +141,7 @@ public static void main(String[] args) {
 
 ### 字符串长度限制
 
-字符串有长度限制，在编译期，要求字符串常量池中的常量不能超过65535，并且在javac执行过程中控制了最大值为65534。
+字符串有长度限制，在编译期，要求<mark>字符串常量池中的常量不能超过65535</mark>，并且在javac执行过程中控制了最大值为65534。
 在运行期，长度不能超过Int的范围，否则会抛异常。
 
 ### Java 6 和 Java 7中subString的区别
@@ -181,5 +184,5 @@ public static void main(String[] args) {
 
 ```
 
-> 如果在循环中使用switch代码块，需要频繁的调用hashCode方法，但是由于String中有一个成员变量hash存储了对象的哈希值，所以开销并不会太大。
+> 如果在循环中使用switch代码块，需要频繁的调用hashCode方法，不过由于String中有一个成员变量hash存储了对象的哈希值，所以开销并不会太大。
 

@@ -1,4 +1,8 @@
-# 运行时数据区
+---
+title: 运行时数据区
+author: 陈生
+date: '2023-08-21'
+---
 根据《Java虚拟机规范》规定，Java虚拟机所管理的内存包括以下几个运行时数据区域。
 <div align='center'>![image.png](./images/runtimearea.png)</div>
 <center>Java虚拟机运行时数据区</center>

@@ -6,11 +6,14 @@
   "author": "chenxing <1057791979@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "vuepress": "^1.9.10"
+    "valine": "^1.5.1",
+    "vuepress": "^1.9.10",
+    "vuepress-plugin-comment": "^0.7.3",
+    "vuepress-theme-reco": "^1.6.17"
   },
   "scripts": {
     "docs:dev": "vuepress dev .",
-    "docs:build": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build .", 
+    "docs:build": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build .",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
